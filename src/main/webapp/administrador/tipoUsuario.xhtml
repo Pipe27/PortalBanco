@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Tipo de Usuario</title> 
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 			<p:growl/>
+ 			<div align="center">
+	 			<p:panel header="Tipo Usuario">
+	 				<h:panelGrid columns="2" border="1">
+		 				<p:outputLabel value="Id Tipo Usuario:"/>
+	 					<p:inputText id="txtTiusId" binding="#{tipoUsuarioVista.txtTiusId}">
+	 						<p:ajax listener="#{tipoUsuarioVista.txtIdentificacionListener}" update="formulario"/>
+	 					</p:inputText>
+	 									
+	 					<p:outputLabel value="Nombre:"/>
+	 					<p:inputText id="txtNombre" binding="#{tipoUsuarioVista.txtNombre}" disabled="true"/>
+	 					
+	 					<p:outputLabel value="Activo"/>
+	 					<p:selectOneMenu id="somActivo" binding="#{tipoUsuarioVista.somActivo}">
+	 						<f:selectItem itemValue="S" itemLabel="SI"/>
+	 						<f:selectItem itemValue="N" itemLabel="NO"/>
+	 					</p:selectOneMenu>
+	 				</h:panelGrid>
+	 			</p:panel>
+	 			<h:panelGrid columns="4">
+		 			<p:commandButton id="btnCrear" value="Crear" binding="#{tipoUsuarioVista.btnCrear}" action="#{tipoUsuarioVista.crearAction}" disabled="true" update="formulario"/>
+			 		<p:commandButton id="btnModificar" value="Modificar" binding="#{tipoUsuarioVista.btnModificar}" action="#{tipoUsuarioVista.modificarAction}" disabled="true" update="formulario"/>
+			 		<p:commandButton id="btnBorrar"	value="Borrar" binding="#{tipoUsuarioVista.btnBorrar}" action="#{tipoUsuarioVista.borrarAction}" disabled="true" update="formulario"/>
+			 		<p:commandButton id="btnLimpiar" value="Limpiar" binding="#{tipoUsuarioVista.btnLimpiar}" action="#{tipoUsuarioVista.limpiarAction}" update="formulario"/>
+	 			</h:panelGrid>
+	 		</div>	
+	 	<p:panel header="Listado Tipo Usuarios">
+ 			<p:dataTable id="dataTipoUsuarios" value="#{tipoUsuarioVista.losTipoUsuario}" var="tipoUsuario" paginator="true" rows="17">
+ 				<p:column headerText="Id Tipo Usuario">
+		     		<p:outputLabel value="#{tipoUsuario.tiusId}"/>
+		     	</p:column>
+		     	
+			     <p:column headerText="Nombre">
+			     	<p:outputLabel value="#{tipoUsuario.nombre}"/>
+			     </p:column>
+		     	
+			     <p:column headerText="Estado - Activo">
+			     	<p:outputLabel value="#{tipoUsuario.activo}"/>
+			     </p:column>
+		    	</p:dataTable>
+			</p:panel>
+			<p:dock position="bottom">
+		 		<p:menuitem value="Registrar Usuarios" icon="../images/newUsers.png" url="../administrador/usuario.xhtml"/>
+				<p:menuitem value="Tipos de Documento" icon="../images/docType.png" url="../administrador/tipoDocumento.xhtml"/>
+				<p:menuitem value="Gestión Cliente" icon="../images/newClient.png" url="../administrador/cliente.xhtml"/>
+				<p:menuitem value="Gestión Cuenta" icon="../images/newAccount.png" url="../administrador/cuenta.xhtml"/>
+				<p:menuitem value="Editar Contraseña" icon="../images/editPass.png" url="../administrador/editarContra.xhtml"/>
+				<p:menuitem value="Salir" icon="../images/back.png" url="../xhtml/principalUsuarioAdministrador.xhtml"/>
+			</p:dock>		
+ 		</h:form>
+     </h:body>
+</html>

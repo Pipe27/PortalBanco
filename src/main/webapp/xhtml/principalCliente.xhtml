@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>.:Portal Cliente:.</title>
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="frmPrincipal">
+ 			<p:growl/>
+ 			<div align="center">
+	 			<p:panel header="Menú Principal - Portal de Cliente">
+	 				<p:outputLabel value="#{principalVista.loginUsuario}"/>
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Modificar Información Personal" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/cliente/editarDatosCliente.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Cambiar Contraseña De Mi Cuenta" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/cliente/editarDatosCuenta.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Mis Movimientos" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/cliente/listaTransacciones.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Registrar Una Cuenta" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/cliente/cuentaRegistrada.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Realizar Transferencia" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/cliente/transferencia.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Cerrar Sesión" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/loginCliente.xhtml" />
+	 			</p:panel>
+	 		</div>
+	 		<p:dock position="bottom">
+	 			<p:menuitem value="Modificar Información" icon="../images/editProfile.png" url="../cliente/editarDatosCliente.xhtml"/>
+				<p:menuitem value="Cambiar Contraseña" icon="../images/editPass.png" url="../cliente/editarDatosCuenta.xhtml"/>
+				<p:menuitem value="Mis Movimientos" icon="../images/moves.png" url="../cliente/listaTransacciones.xhtml"/>
+				<p:menuitem value="Registrar Cuenta" icon="../images/addAccount.png" url="../cliente/cuentaRegistrada.xhtml"/>
+				<p:menuitem value="Transferir Dinero" icon="../images/transferMoney.png" url="../cliente/transferencia.xhtml"/>
+				<p:menuitem value="Salir" icon="../images/salir.png" url="../loginCliente.xhtml"/>
+			</p:dock>
+ 		</h:form>
+     </h:body>
+</html>

@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Crear Cuenta</title> 
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 			<p:growl/>
+ 			<div align="center">
+ 				<p:panel>
+ 					<h3><p:outputLabel value="Recuerde:"/></h3>
+ 					<p:outputLabel value="Si desea cambiar el estado o contraseña de una cuenta deberá ingresar el número de la misma."/>
+ 					<br/>
+ 					<p:outputLabel value="Si desea crear una nueva cuenta a un cliente, deberá ingresar la identificación del cliente y no una cuenta."/>
+ 				</p:panel>
+ 				<p:panel header="Gestión Cuenta">
+ 				<h:panelGrid columns="2" border="1">
+ 					<p:outputLabel value="Número de Cuenta"/>
+ 					<p:inputText id="txtIdentificacion" binding="#{cuentaVista.txtIdentificacion}" placeholder="0000-0000-0000-0000">
+ 						<p:ajax listener="#{cuentaVista.txtIdentificacionListener}" update="formulario" />
+ 					</p:inputText>
+ 					
+ 					<p:outputLabel value="Cliente Id"/>
+ 					<p:inputText id="txtCliente" binding="#{cuentaVista.txtCliente}" placeholder="Ingresa tu identificación">
+ 						<p:ajax listener="#{cuentaVista.txtIdListener}" update="formulario" />
+ 					</p:inputText>
+ 					
+ 					<p:outputLabel value="Nombre Cliente"/>
+ 					<p:inputText id="txtNombreCliente" binding="#{cuentaVista.txtNombreCliente}" placeholder="Ingrese un nombre" readonly="true"/>
+ 					
+ 					<p:outputLabel value="Saldo"/>
+ 					<p:inputNumber id="txtSaldo" placeholder="$000.000.000"  binding="#{cuentaVista.txtSaldo}" disabled="true"/>
+ 					
+ 					<p:outputLabel value="Clave"/>
+ 					<p:inputText id="txtClave" binding="#{cuentaVista.txtClave}" placeholder="*********" disabled="true"/>
+ 					
+ 					<p:outputLabel value="Activa"/>
+ 					<p:selectOneMenu id="somActiva" binding="#{cuentaVista.somActiva}">
+ 						<f:selectItem itemValue="S" itemLabel="SI" />
+ 						<f:selectItem itemValue="N" itemLabel="NO" />
+ 					</p:selectOneMenu>
+ 					
+ 				</h:panelGrid>
+ 				
+ 				<h:panelGrid columns="4">
+ 					<p:commandButton id="btnCrear" value="Crear" binding="#{cuentaVista.btnCrear}" action="#{cuentaVista.crearAction}" update="formulario"/>
+ 					<p:commandButton id="btnModificar" disabled="true" value="Modificar" binding="#{cuentaVista.btnModificar}" action="#{cuentaVista.modificarAction}" update="formulario"/>
+ 					<p:commandButton id="btnLimpiar" value="Limpiar" binding="#{cuentaVista.btnLimpiar}" action="#{cuentaVista.limpiarAction}" update="formulario"/>
+ 				</h:panelGrid>
+ 				</p:panel>
+ 			</div>
+ 			
+ 			<div align="center">
+	 			<p:panel header="Listado de Cuentas">
+			 		<p:dataTable id="dataCuenta" value="#{cuentaVista.lasCuentas}" var="cuenta" paginator="true" rows="10">
+			 			<p:column headerText="Número de Cuenta">
+			 				<p:outputLabel value="#{cuenta.cuenId}" />
+			 			</p:column>
+			 			
+			 			<p:column headerText="Id del Cliente">
+			 				<p:outputLabel value="#{cuenta.cliente.clieId}" />
+			 			</p:column>
+			 			
+			 			<p:column headerText="Activa">
+			 				<p:outputLabel value="#{cuenta.activa}" />
+			 			</p:column>	 		
+			 		</p:dataTable>	
+	 			</p:panel>
+	 		</div>
+ 		<p:stack icon="../images/stack.png" expanded="false">
+			<p:menuitem value="Volver" icon="../images/back.png" url="../xhtml/principalUsuarioComercial.xhtml"/>
+			<p:menuitem value="Gestión Cliente" icon="../images/newClient.png" url="../comercial/cliente.xhtml"/>
+			<p:menuitem value="Editar Contraseña" icon="../images/editPass.png" url="../comercial/editarContra.xhtml"/>
+		</p:stack>			
+ 	</h:form>
+     </h:body>
+</html>

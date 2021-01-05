@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>.:Portal Comercial:.</title>
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="frmPrincipal">
+ 			<p:growl/>
+ 			<div align="center">
+	 			<p:panel header="Menú Principal - Portal de Usuario Comercial">
+	 				<p:outputLabel value="#{principalUsuarioVista.loginUsuario}"/>
+	 				<br/>
+	 				<p:outputLabel value="Cargo: #{principalUsuarioVista.tipoUsuario}"/>
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Gestión Cliente" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/comercial/cliente.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Gestión Cuentas" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/comercial/cuenta.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Modificar la Contraseña" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/comercial/editarContra.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Cerrar Sesión" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/loginUsuario.xhtml" />			
+	 			</p:panel>
+	 		</div>
+	 		<p:stack icon="../images/stack.png" expanded="false">
+				<p:menuitem value="Salir" icon="../images/salir.png" url="../loginUsuario.xhtml"/>
+			    <p:menuitem value="Gestión Cliente" icon="../images/newClient.png" url="../comercial/cliente.xhtml"/>
+			    <p:menuitem value="Gestión Cuenta" icon="../images/newAccount.png" url="../comercial/cuenta.xhtml"/>
+			    <p:menuitem value="Editar Contraseña" icon="../images/editPass.png" url="../comercial/editarContra.xhtml"/>
+			</p:stack>		
+ 		</h:form>
+     </h:body>
+</html>

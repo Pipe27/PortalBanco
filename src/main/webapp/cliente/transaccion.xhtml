@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Realizar Transacción</title>
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 		<p:growl/>
+ 		<div align="center">
+ 			<p:panel header="Gestion Transaccion">
+ 				<h:panelGrid columns="2" border="1">
+ 					<p:outputLabel value="Id Transacción:"/>
+ 					<p:inputText id="txtIdTrans" binding="#{transaccionVista.txtIdTrans}">
+ 						<p:ajax listener="#{transaccionVista.txtIdentificacionListener}" update="formulario"/>
+ 					</p:inputText>
+ 					
+ 					<p:outputLabel value="Cuenta:"/>
+ 					<p:inputText id="txtCuenta" binding="#{transaccionVista.txtCuenta}" />
+ 					
+ 					<p:outputLabel value="Usuario:"/>
+ 					<p:inputText id="txtUsuario" binding="#{transaccionVista.txtUsuario}" />
+ 					
+ 					<p:outputLabel value="Valor:"/>
+ 					<p:inputText id="txtValor" binding="#{transaccionVista.txtValor}" />
+ 					
+ 					<p:outputLabel value="Fecha"/>
+ 					<p:calendar id="txtFecha" value="#{transaccionVista.txtFecha}"  pattern="dd/MM/yyyy"  />
+ 					
+ 					<p:outputLabel value="TipoTransaccion:"/>
+ 					<p:selectOneMenu id="somTipoTransaccion" binding="#{transaccionVista.somTipoTransaccion}">
+ 						<f:selectItems value="#{transaccionVista.losTipoTransaccionSelectItem}" />
+ 					</p:selectOneMenu>
+ 					
+ 				</h:panelGrid>
+ 			</p:panel>
+ 				
+ 				<h:panelGrid columns="4">
+ 					<p:commandButton id="btnCrear" value="Crear" binding="#{transaccionVista.btnCrear}" action="#{transaccionVista.crearAction}" disabled="true" update="formulario"/>
+	 				<p:commandButton id="btnModificar" value="Modificar" binding="#{transaccionVista.btnModificar}" action="#{transaccionVista.modificarAction}" disabled="true" update="formulario"/>
+	 				<p:commandButton id="btnBorrar"	value="Borrar" binding="#{transaccionVista.btnBorrar}" action="#{transaccionVista.borrarAction}" disabled="true" update="formulario"/>
+	 				<p:commandButton id="btnLimpiar" value="Limpiar" binding="#{transaccionVista.btnLimpiar}" action="#{transaccionVista.limpiarAction}" update="formulario"/>
+ 				</h:panelGrid>
+ 				<h:panelGrid columns="4">
+ 					<p:commandButton id="btnVolver" value="Regresar Atrás" action="#{transaccionVista.redirigir}" update="formulario"/>
+ 				</h:panelGrid>
+ 			</div>
+ 			<p:panel header="Listado Transacciones">
+ 			<p:dataTable id="dataTransacciones" value="#{transaccionVista.lasTransacciones}" var="transaccion" paginator="true" rows="17">
+ 				<p:column headerText="Identificador Transaccion">
+		     		<p:outputLabel value="#{transaccion.tranId}"/>
+		     	</p:column>
+		     	
+			     <p:column headerText="Cuenta Id">
+			     	<p:outputLabel value="#{transaccion.cuenta.cuenId}"/>
+			     </p:column>
+			     	
+			     <p:column headerText="Tipo de Transaccion">
+			     	<p:outputLabel value="#{transaccion.tipoTransaccion.titrId}"/>
+			     </p:column>
+			     	
+			     <p:column headerText="Usuario">
+			     	<p:outputLabel value="#{transaccion.usuario.usuUsuario}"/>
+			     </p:column>
+			     	
+			     <p:column headerText="Valor Transacción">
+			     	<p:outputLabel value="#{transaccion.valor}"/>
+			     </p:column>
+		     	
+			     <p:column headerText="Fecha Transacción">
+			     	<p:outputLabel value="#{transaccion.fecha}"/>
+			     </p:column>
+		    	</p:dataTable>
+			</p:panel>		
+ 		</h:form>
+     </h:body>
+</html>

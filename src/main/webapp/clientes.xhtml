@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+			
+			
+			<h:form id="formDialog">
+				<p:messages id="msg" />
+				<p:growl id="men"/>
+					<p:panel id="panelClientes" header="Clientes">							
+						<h:panelGrid columns="2" id="panelGrid" >
+												 	<h:outputText id="msgCliId" value="CliId"/>
+						 	<p:inputText id="txtCliId" binding="#{clientesView.txtCliId}">
+						 		<p:ajax update="panelClientes,msg,panelBotones" listener="#{clientesView.listener_txtId}"/>
+						 	</p:inputText>	
+																		
+													<h:outputText id="msgCliDireccion" value=" CliDireccion"/>
+							<p:inputText id="txtCliDireccion" disabled="true" binding="#{clientesView.txtCliDireccion}"/>
+													<h:outputText id="msgCliMail" value=" CliMail"/>
+							<p:inputText id="txtCliMail" disabled="true" binding="#{clientesView.txtCliMail}"/>
+													<h:outputText id="msgCliNombre" value=" CliNombre"/>
+							<p:inputText id="txtCliNombre" disabled="true" binding="#{clientesView.txtCliNombre}"/>
+													<h:outputText id="msgCliTelefono" value=" CliTelefono"/>
+							<p:inputText id="txtCliTelefono" disabled="true" binding="#{clientesView.txtCliTelefono}"/>
+													<h:outputText id="msgTdocCodigo_TiposDocumentos" value=" TdocCodigo_TiposDocumentos"/>
+							<p:inputText id="txtTdocCodigo_TiposDocumentos" disabled="true" binding="#{clientesView.txtTdocCodigo_TiposDocumentos}"/>
+												
+										   </h:panelGrid>
+				</p:panel>
+	   			<p:panel id="panelBotones">
+					<div align="center">					
+						<p:commandButton id="btnSave" binding="#{clientesView.btnSave}" disabled="true" value="Save" action="#{clientesView.action_save()}" update="panelClientes,msg,panelBotones, men" />
+						<p:commandButton id="btnDelete" binding="#{clientesView.btnDelete}" disabled="true" value="Delete" action="#{clientesView.action_delete_master()}" onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}" update="panelClientes,msg,panelBotones" />
+						<p:commandButton id="btnClear" value="Clear" action="#{clientesView.action_clear()}" update="panelClientes,msg,panelBotones" />
+					</div>
+				</p:panel>			
+			</h:form>
+			
+  </ui:define>
+</ui:composition>

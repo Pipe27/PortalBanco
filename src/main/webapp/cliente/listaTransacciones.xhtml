@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+     <h:head>
+     	<title>Mis Movimientos</title>
+     </h:head>
+
+     <h:body>
+     	<h:form id="formulario">
+ 			<p:growl/>
+ 			<div align="center">
+ 				<p:panel header="Listado de Movimientos de la Cuenta">
+	    			<h:panelGrid columns="2" border="1">
+	    				<p:outputLabel value="Seleccione una opción:"/>
+	    				<p:selectOneRadio id="tipoTransaccion" binding="#{listaTransaccionesVista.tipoTransaccion}">
+			           		<f:selectItems value="#{listaTransaccionesVista.losTipoTrans}" update="formulario"/>
+        				</p:selectOneRadio>
+	    			</h:panelGrid>
+	    			<h:panelGrid columns="4">
+ 						<p:commandButton id="btnBuscar" value="Buscar" binding="#{listaTransaccionesVista.btnBuscar}" action="#{listaTransaccionesVista.buscarAction}" update="formulario"/>
+ 					</h:panelGrid>
+ 					
+ 					<p:dataTable id="dataTransacciones" value="#{listaTransaccionesVista.lasTransacciones}"  var="transaccion" paginator="true" rows="10">
+			 			<p:column headerText="Cuenta">
+			 				<p:outputLabel value="#{transaccion.cuenta.cuenId}" />
+			 			</p:column>
+	 			
+			 			<p:column headerText="Valor ">
+			 				<p:outputLabel value="#{transaccion.valor}" />
+			 			</p:column>
+			 			
+			 			<p:column headerText="Usuario">
+			 				<p:outputLabel value="#{transaccion.usuario.usuUsuario}" />
+			 			</p:column>
+			 			
+			 			<p:column headerText="Fecha">
+			 				<p:outputLabel value="#{transaccion.fecha}" />
+			 			</p:column>
+	 				</p:dataTable>
+	    		</p:panel>
+ 			</div>
+ 			<p:dock position="bottom">
+				<p:menuitem value="Modificar Información" icon="../images/editProfile.png" url="../cliente/editarDatosCliente.xhtml"/>
+				<p:menuitem value="Cambiar Contraseña" icon="../images/editPass.png" url="../cliente/editarDatosCuenta.xhtml"/>
+				<p:menuitem value="Registrar Cuenta" icon="../images/addAccount.png" url="../cliente/cuentaRegistrada.xhtml"/>
+				<p:menuitem value="Transferir Dinero" icon="../images/transferMoney.png" url="../cliente/transferencia.xhtml"/>
+				<p:menuitem value="Salir" icon="../images/back.png" url="../xhtml/principalCliente.xhtml"/>
+			</p:dock>	
+ 		</h:form>
+ 	</h:body>
+</html>

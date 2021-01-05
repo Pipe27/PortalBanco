@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>.:Portal Administrador:.</title>
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="frmPrincipal">
+ 			<p:growl/>
+ 			<div align="center">
+	 			<p:panel header="Menú Principal - Portal de Usuario Administrador">
+	 				<p:outputLabel value="#{principalUsuarioVista.loginUsuario}"/>
+	 				<br/>
+	 				<p:outputLabel value="Cargo: #{principalUsuarioVista.tipoUsuario}"/>
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Registrar Usuarios" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/administrador/usuario.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Gestión de los Tipos de Usuarios" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/administrador/tipoUsuario.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Gestión de los Tipos de Documentos" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/administrador/tipoDocumento.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Gestión Cliente" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/administrador/cliente.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Gestión Nueva" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/administrador/cuenta.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Modificar la Contraseña" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/administrador/editarContra.xhtml" />
+	 				<br/>
+	 				<br/>
+	 				<p:link value="Cerrar Sesión" href="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/loginUsuario.xhtml" />
+	 			</p:panel>
+	 		</div>
+	 		<p:dock position="bottom">
+	 			<p:menuitem value="Registrar Usuarios" icon="../images/newUsers.png" url="../administrador/usuario.xhtml"/>
+				<p:menuitem value="Tipos de Usuario" icon="../images/usersTypes.png" url="../administrador/tipoUsuario.xhtml"/>
+				<p:menuitem value="Tipos de Documento" icon="../images/docType.png" url="../administrador/tipoDocumento.xhtml"/>
+				<p:menuitem value="Gestión Cliente" icon="../images/newClient.png" url="../administrador/cliente.xhtml"/>
+				<p:menuitem value="Gestión Cuenta" icon="../images/newAccount.png" url="../administrador/cuenta.xhtml"/>
+				<p:menuitem value="Editar Contraseña" icon="../images/editPass.png" url="../administrador/editarContra.xhtml"/>
+				<p:menuitem value="Salir" icon="../images/salir.png" url="../loginUsuario.xhtml"/>
+			</p:dock>		
+ 		</h:form>
+     </h:body>
+</html>

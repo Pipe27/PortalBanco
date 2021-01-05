@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Gestión Usuario</title> 
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 		<p:growl/>
+ 		<div align="center">
+ 			<p:panel header="Gestion Usuario">
+ 				<h:panelGrid columns="2" border="1">
+ 					<p:outputLabel value="Usuario:"/>
+ 						<p:inputText id="txtUsuUsuario" binding="#{usuarioVista.txtUsuUsuario}">
+ 						<p:ajax listener="#{usuarioVista.txtIdentificacionListener}" update="formulario"/>
+ 					</p:inputText>
+ 					
+ 					<p:outputLabel value="Identificación:"/>
+ 					<p:inputText id="txtIdenticacion" binding="#{usuarioVista.txtIdenticacion}"/>
+ 					
+ 					<p:outputLabel value="TipoUsuario:"/>
+ 					<p:selectOneMenu id="somTipoUsuario" binding="#{usuarioVista.somTipoUsuario}">
+ 						<f:selectItems value="#{usuarioVista.losTipoUsuarioSelectItem}" />
+ 					</p:selectOneMenu>
+ 					
+ 					<p:outputLabel value="Nombre:"/>
+ 					<p:inputText id="txtNombre" binding="#{usuarioVista.txtNombre}" />
+ 					
+ 					<p:outputLabel value="Clave:"/>
+ 					<p:inputText id="txtClave" binding="#{usuarioVista.txtClave}" />
+ 					
+ 					<p:outputLabel value="Activo"/>
+ 					<p:selectOneMenu id="somActivo" binding="#{usuarioVista.somActivo}">
+ 						<f:selectItem itemValue="S" itemLabel="SI"/>
+ 						<f:selectItem itemValue="N" itemLabel="NO"/>
+ 					</p:selectOneMenu>
+ 				</h:panelGrid>
+ 				
+ 				<h:panelGrid columns="4">
+ 					<p:commandButton id="btnCrear" value="Crear" binding="#{usuarioVista.btnCrear}" action="#{usuarioVista.crearAction}" disabled="true" update="formulario"/>
+	 				<p:commandButton id="btnModificar" value="Modificar" binding="#{usuarioVista.btnModificar}" action="#{usuarioVista.modificarAction}" disabled="true" update="formulario"/>
+	 				<p:commandButton id="btnBorrar"	value="Borrar" binding="#{usuarioVista.btnBorrar}" action="#{usuarioVista.borrarAction}" disabled="true" update="formulario"/>
+	 				<p:commandButton id="btnLimpiar" value="Limpiar" binding="#{usuarioVista.btnLimpiar}" action="#{usuarioVista.limpiarAction}" update="formulario"/>
+ 				</h:panelGrid>
+ 			</p:panel>
+ 			</div>	
+ 			<p:panel header="Listado Usuario">
+                <p:dataTable id="dataUsuario" value="#{usuarioVista.losUsuarios}" var="usuario" paginator="true" rows="17">
+                
+                <p:column headerText="Nombre Usuario">
+                	<p:outputLabel value="#{usuario.usuUsuario}"/>
+                </p:column>
+                
+                <p:column headerText="Tipo Usuario">
+                	<p:outputLabel value="#{usuario.tipoUsuario.tiusId}"/>
+                </p:column>
+                
+                <p:column headerText="Clave">
+                	<p:outputLabel value="#{usuario.clave}"/>
+                </p:column>
+                
+                <p:column headerText="Identificacion">
+                	<p:outputLabel value="#{usuario.identificacion}"/>
+                </p:column>
+                
+                <p:column headerText="Nombre Cliente">
+                	<p:outputLabel value="#{usuario.nombre}"/>
+                </p:column>
+                
+                <p:column headerText="Activo">
+                	<p:outputLabel value="#{usuario.activo}"/>
+                </p:column>
+                </p:dataTable>
+		    </p:panel>
+		    <p:dock position="bottom">
+				<p:menuitem value="Tipos de Usuario" icon="../images/usersTypes.png" url="../administrador/tipoUsuario.xhtml"/>
+				<p:menuitem value="Tipos de Documento" icon="../images/docType.png" url="../administrador/tipoDocumento.xhtml"/>
+				<p:menuitem value="Gestión Cliente" icon="../images/newClient.png" url="../administrador/cliente.xhtml"/>
+				<p:menuitem value="Gestión Cuenta" icon="../images/newAccount.png" url="../administrador/cuenta.xhtml"/>
+				<p:menuitem value="Editar Contraseña" icon="../images/editPass.png" url="../administrador/editarContra.xhtml"/>
+				<p:menuitem value="Salir" icon="../images/back.png" url="../xhtml/principalUsuarioAdministrador.xhtml"/>
+			</p:dock>	
+ 		</h:form>
+     </h:body>
+</html>

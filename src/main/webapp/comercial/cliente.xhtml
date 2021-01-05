@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Registrar Cliente</title>
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 		<p:messages autoUpdate="true"/>
+ 		<div align="center">
+ 			<p:panel header="Gestion Cliente">
+ 				<h:panelGrid columns="2" border="1">
+ 					<p:outputLabel value="Identificación:"/>
+ 					<p:inputText id="txtIdentificacion" binding="#{clienteVista.txtIdenticacion}">
+ 						<p:ajax listener="#{clienteVista.txtIdentificacionListener}" update="formulario"/>
+ 					</p:inputText>
+ 					
+ 					<p:outputLabel value="TipoDocumento:"/>
+ 					<p:selectOneMenu id="somTipoDocumento" binding="#{clienteVista.somTipoDocumento}">
+ 						<f:selectItems value="#{clienteVista.losTipoDocumentoSelectItem}" />
+ 					</p:selectOneMenu>
+ 					
+ 					<p:outputLabel value="Nombre"/>
+ 					<p:inputText id="txtNombre" binding="#{clienteVista.txtNombre}" />
+ 					
+ 					<p:outputLabel value="Direccion"/>
+ 					<p:inputText id="txtDireccion" placeholder="Cra 53 # 13 E - 31" binding="#{clienteVista.txtDireccion}"/>
+ 					
+ 					<p:outputLabel value="Telefono"/>
+ 					<p:inputText id="txtTelefono" placeholder="316-226-9809" binding="#{clienteVista.txtTelefono}" />
+ 					
+ 					<p:outputLabel value="E-Mail"/>
+ 					<p:inputText id="txtEmail" placeholder="example@hotmail.com" binding="#{clienteVista.txtMail}" />
+ 					
+ 					<p:outputLabel value="Activo"/>
+ 					<p:selectOneMenu id="somActivo" binding="#{clienteVista.somActivo}">
+ 						<f:selectItem itemValue="S" itemLabel="SI"/>
+ 						<f:selectItem itemValue="N" itemLabel="NO"/>
+ 					</p:selectOneMenu>
+ 				</h:panelGrid>
+ 			</p:panel>
+ 			<h:panelGrid columns="4">
+	 			<p:commandButton id="btnCrear" value="Crear" binding="#{clienteVista.btnCrear}" action="#{clienteVista.crearAction}" disabled="true" update="formulario"/>
+	 			<p:commandButton id="btnModificar" value="Modificar" binding="#{clienteVista.btnModificar}" action="#{clienteVista.modificarAction}" disabled="true" update="formulario"/>
+	 			<p:commandButton id="btnBorrar"	value="Borrar" binding="#{clienteVista.btnBorrar}" action="#{clienteVista.borrarAction}" disabled="true" update="formulario"/>
+	 			<p:commandButton id="btnLimpiar" value="Limpiar" binding="#{clienteVista.btnLimpiar}" action="#{clienteVista.limpiarAction}" update="formulario"/>
+ 			</h:panelGrid>
+ 		</div>
+ 
+ 		<p:panel header="Listado Clientes">
+ 			<p:dataTable id="dataCliente" value="#{clienteVista.losClientes}" var="cliente" paginator="true" rows="17">
+ 				<p:column headerText="Identificación">
+		     		<p:outputLabel value="#{cliente.clieId}"/>
+		     	</p:column>
+		     	
+			     <p:column headerText="Nombre">
+			     	<p:outputLabel value="#{cliente.nombre}"/>
+			     </p:column>
+			     	
+			     <p:column headerText="Dirección">
+			     	<p:outputLabel value="#{cliente.direccion}"/>
+			     </p:column>
+			     	
+			     <p:column headerText="Teléfono">
+			     	<p:outputLabel value="#{cliente.telefono}"/>
+			     </p:column>
+			     	
+			     <p:column headerText="E-Mail">
+			     	<p:outputLabel value="#{cliente.email}"/>
+			     </p:column>
+		     	
+			     <p:column headerText="Estado - Activo">
+			     	<p:outputLabel value="#{cliente.activo}"/>
+			     </p:column>
+		    	</p:dataTable>
+			</p:panel>
+			<p:stack icon="../images/stack.png" expanded="false">
+				<p:menuitem value="Volver" icon="../images/back.png" url="../xhtml/principalUsuarioComercial.xhtml"/>
+			    <p:menuitem value="Gestión Cuenta" icon="../images/newAccount.png" url="../comercial/cuenta.xhtml"/>
+			    <p:menuitem value="Editar Contraseña" icon="../images/editPass.png" url="../comercial/editarContra.xhtml"/>
+			</p:stack>		
+ 		</h:form>
+     </h:body>
+</html>

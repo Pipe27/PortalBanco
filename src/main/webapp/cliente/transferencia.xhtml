@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Transferencia</title>
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 		<p:messages autoUpdate="true"/>
+	 		<div align="center">
+	 			<p:panel header="Gestion Transferencia">
+	 				<h:panelGrid columns="2" border="1">
+	 					<p:outputLabel value="Cuenta Origen:"/>
+	 					<p:inputText id="txtCuentaOrigen" value="#{transferenciaVista.txtCuentaOrigen}" readonly="true"/>
+	 					
+	 					<p:outputLabel value="Cuenta Destino:"/>
+ 						<p:selectOneMenu id="cuenRegis" binding="#{transferenciaVista.cuenRegis}">
+ 							<f:selectItems value="#{transferenciaVista.cuentasRegistradas}"/>
+ 						</p:selectOneMenu>
+ 						
+ 						<p:outputLabel value="Cantidad a Transferir:"/>
+	 					<p:inputNumber id="txtValor" binding="#{transferenciaVista.txtValor}" required="true"/>
+	 					
+	 				</h:panelGrid>
+	 				<h:panelGrid columns="4">
+	 					<p:commandButton id="btnTransferir" value="Transferir" binding="#{transferenciaVista.btnTransferir}" disabled="false" action="#{transferenciaVista.transferirAction}"/>
+	 					<p:commandButton id="btnLimpiar" value="Limpiar" binding="#{transferenciaVista.btnLimpiar}" disabled="false" action="#{transferenciaVista.limpiarAction}" update="formulario"/>
+ 					</h:panelGrid>
+	 			</p:panel> 
+	 			<p:panel header="Saldo Actual">
+		 			<h:panelGrid>
+		 					<p:outputLabel value="Saldo Disponible:"/>
+		 					<p:inputText id="txtNuevoSaldo" value="#{transferenciaVista.txtNuevoSaldo}" readonly="true" />
+		 			</h:panelGrid>
+	 			</p:panel>		
+	 		</div>
+	 		<p:dock position="bottom">
+				<p:menuitem value="Modificar Información" icon="../images/editProfile.png" url="../cliente/editarDatosCliente.xhtml"/>
+				<p:menuitem value="Cambiar Contraseña" icon="../images/editPass.png" url="../cliente/editarDatosCuenta.xhtml"/>
+				<p:menuitem value="Mis Movimientos" icon="../images/moves.png" url="../cliente/listaTransacciones.xhtml"/>
+				<p:menuitem value="Registrar Cuenta" icon="../images/addAccount.png" url="../cliente/cuentaRegistrada.xhtml"/>
+				<p:menuitem value="Salir" icon="../images/back.png" url="../xhtml/principalCliente.xhtml"/>
+			</p:dock>
+ 		</h:form>
+ 	</h:body>
+ </html>

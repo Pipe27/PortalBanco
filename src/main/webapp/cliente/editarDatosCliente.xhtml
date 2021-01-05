@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Modificar Datos Cliente</title> 
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 		<p:growl/>
+ 		<div align="center">
+ 			<p:panel header="Modifica Tus Datos">
+ 				<h:panelGrid columns="2" border="1">
+ 					<p:outputLabel value="Identificación:"/>
+ 					<p:inputText id="txtIdentificacion" value="#{editarDatosClienteVista.txtIdenticacion}" readonly="true"/>
+ 					
+ 					<p:outputLabel value="Tipo de Documento:"/>
+ 					<p:inputText id="somTipoDocumento" value="#{editarDatosClienteVista.somTipoDocumento}" readonly="true"/>
+ 					
+ 					<p:outputLabel value="Nombre"/>
+ 					<p:inputText id="txtNombre" value="#{editarDatosClienteVista.txtNombre}" readonly="true"/>
+ 					
+ 					<p:outputLabel value="Direccion"/>
+ 					<p:inputText id="txtDireccion" placeholder="Cra 53 # 13 E - 31" value="#{editarDatosClienteVista.txtDireccion}"/>
+ 					
+ 					<p:outputLabel value="Telefono"/>
+ 					<p:inputText id="txtTelefono" placeholder="316-226-9809" value="#{editarDatosClienteVista.txtTelefono}" />
+ 					
+ 					<p:outputLabel value="E-Mail"/>
+ 					<p:inputText id="txtEmail" placeholder="example@hotmail.com" value="#{editarDatosClienteVista.txtMail}" />
+ 				</h:panelGrid>
+ 			</p:panel>
+ 			<h:panelGrid columns="4">
+	 			<p:commandButton id="btnModificar" value="Modificar" binding="#{editarDatosClienteVista.btnModificar}" action="#{editarDatosClienteVista.modificarAction}" update="formulario"/>
+	 			<p:commandButton value="Cargar Valores Anteriores" >
+                	<p:ajax update="formulario" resetValues="true" />
+            	</p:commandButton>
+ 			</h:panelGrid>
+ 			<p:dock position="bottom">
+				<p:menuitem value="Cambiar Contraseña" icon="../images/editPass.png" url="../cliente/editarDatosCuenta.xhtml"/>
+				<p:menuitem value="Mis Movimientos" icon="../images/moves.png" url="../cliente/listaTransacciones.xhtml"/>
+				<p:menuitem value="Registrar Cuenta" icon="../images/addAccount.png" url="../cliente/cuentaRegistrada.xhtml"/>
+				<p:menuitem value="Transferir Dinero" icon="../images/transferMoney.png" url="../cliente/transferencia.xhtml"/>
+				<p:menuitem value="Regresar" icon="../images/back.png" url="../xhtml/principalCliente.xhtml"/>
+			</p:dock>
+ 		</div>
+ 		</h:form>
+     </h:body>
+</html>

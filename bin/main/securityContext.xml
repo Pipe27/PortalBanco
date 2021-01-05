@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Author Zathuracode Generator -->
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+      
+    <http auto-config="true" >
+        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/loginCliente.xhtml" access="permitAll" />
+        <intercept-url pattern="/cliente/*" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/comercial/*" access="hasRole('ROLE_COMERCIAL') or hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/administrador/*" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/cajero/*" access="hasRole('ROLE_CAJERO')" />
+        <intercept-url pattern="/xhtml/*" access="hasRole('ROLE_USER') or hasRole('ROLE_COMERCIAL') or hasRole('ROLE_ADMIN') or hasRole('ROLE_CAJERO')" />
+        
+        <form-login login-page="/loginCliente.xhtml" authentication-failure-url="/login.xhtml?authfailed=true" default-target-url="/xhtml/principalCliente.xhtml" always-use-default-target="false"  />
+		<form-login login-page="/loginUsuario.xhtml" authentication-failure-url="/login.xhtml?authfailed=true" default-target-url="/xhtml/principalCliente.xhtml" always-use-default-target="false"  />
+			
+		<logout invalidate-session="true" logout-success-url="/login.xhtml?loggedout=true" logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" />
+
+ 		<csrf disabled="true"/>
+    </http>
+  
+    <authentication-manager alias="authenticationManager">
+		<authentication-provider ref="bancoAutProvider" />
+	</authentication-manager>
+          
+</beans:beans>

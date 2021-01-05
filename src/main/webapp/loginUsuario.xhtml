@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>.:Login Usuario:.</title>
+	<meta name="content-type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+		<br></br>
+ 		<div align="right">
+			<p:clock /> 		
+ 		</div>
+ 		<br></br>
+	<h:form>
+	<p:growl id="msgGrowl" showDetail="false" />
+	<div align="center">
+		<p:panel header="Login Usuario">
+		<h:panelGrid columns="2" border="0">
+			<p:outputLabel value="Nombre del Usuario:"/>
+			<p:inputText id="usernameField" name="j_username" value="#{loginUsuarioVista.username}" placeholder="pipei27" />
+			
+			<p:outputLabel value="Contraseña del Usuario:"/>
+			<p:password id="passwordField" name="j_password" value="#{loginUsuarioVista.password}" placeholder="Digite su contraseña" feedback="false" />
+		</h:panelGrid>
+		<h:panelGrid columns="1" border="0">
+			<p:commandButton value="Ingresar" action="#{loginUsuarioVista.login}" update="msgGrowl" styleClass="myButton"/>
+		</h:panelGrid>
+		</p:panel>
+	</div>
+	</h:form>
+</h:body>
+</html>

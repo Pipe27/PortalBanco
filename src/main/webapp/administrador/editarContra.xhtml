@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+     	<title>Modificar Contraseña</title> 
+     </h:head>
+ 
+     <h:body>
+ 		<h:form id="formulario">
+ 			<p:growl/>
+ 			<div align="center">
+ 				<p:panel header="Editar Contraseña">
+	 				<h:panelGrid columns="2" border="1">
+	 					<p:outputLabel value="Nombre Usuario:"/>
+	 					<p:inputText id="txtNombreUsuario" value="#{editarContraVista.txtNombreUsuario}" readonly="true"/>
+	 					
+	 					<p:outputLabel value="Usuario:"/>
+	 					<p:inputText id="txtUsuUsuario" value="#{editarContraVista.txtUsuUsuario}" readonly="true"/>
+	
+	 					<h:outputLabel for="pwd1" value="Digite su nueva contraseña:" />
+	        			<p:password id="pwd1" value="#{editarContraVista.txtClave}" match="pwd2" label="Password 1" feedback="true"/>
+	 	
+				        <h:outputLabel for="pwd2" value="Confirme su nueva contraseña:" />
+				        <p:password id="pwd2" value="#{editarContraVista.txtClave}" label="Password 2" />
+	 				</h:panelGrid>
+	 				
+	 				<h:panelGrid columns="4">
+	 					<p:commandButton id="btnModificar" value="Modificar" binding="#{editarContraVista.btnModificar}" action="#{editarContraVista.modificarAction}" update="formulario"/>
+	 					<p:commandButton value="Limpiar Contraseña" >
+	                		<p:ajax update="formulario:pwd1, formulario:pwd2" resetValues="true" />
+	            		</p:commandButton>
+	 				</h:panelGrid>
+ 				</p:panel>
+ 			</div>
+ 		<p:dock position="bottom">
+			<p:menuitem value="Registrar Usuarios" icon="../images/newUsers.png" url="../administrador/usuario.xhtml"/>
+			<p:menuitem value="Tipos de Usuario" icon="../images/usersTypes.png" url="../administrador/tipoUsuario.xhtml"/>
+			<p:menuitem value="Tipos de Documento" icon="../images/docType.png" url="../administrador/tipoDocumento.xhtml"/>
+			<p:menuitem value="Gestión Cliente" icon="../images/newClient.png" url="../administrador/cliente.xhtml"/>
+			<p:menuitem value="Gestión Cuenta" icon="../images/newAccount.png" url="../administrador/cuenta.xhtml"/>
+			<p:menuitem value="Volver" icon="../images/back.png" url="../xhtml/principalUsuarioAdministrador.xhtml"/>
+		</p:dock>	
+ 	</h:form>
+     </h:body>
+</html>

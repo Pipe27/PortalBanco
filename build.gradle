@@ -1,0 +1,59 @@
+
+apply plugin: 'war'
+
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+dependencies {
+   
+    // Use JUnit test framework
+    testCompile group:'org.junit.platform', name:'junit-platform-launcher', version:'1.0.3'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.3'
+	testCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '4.12.3'
+    
+    //Hibernate JPA
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final'
+    
+    //Postgresql
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.1'
+    
+    //logj2 slf4j
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'     
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
+    
+    //Spring 5.0.4
+    compile 'org.springframework:spring-context:5.0.5.RELEASE'
+    compile 'org.springframework:spring-test:5.0.5.RELEASE'
+    compile 'org.springframework:spring-orm:5.0.5.RELEASE'
+    compile 'org.springframework:spring-web:5.0.5.RELEASE'
+    compile 'org.springframework:spring-webmvc:5.0.5.RELEASE'
+    
+    compile 'org.springframework.security:spring-security-web:5.0.4.RELEASE'
+	compile 'org.springframework.security:spring-security-config:5.0.4.RELEASE'
+    
+    //Validator 
+    compile 'org.hibernate.validator:hibernate-validator:6.0.8.Final'
+	compile group: 'org.glassfish', name: 'javax.el', version: '3.0.1-b08'
+	
+	//Web
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+	
+	//Primefaces
+	compile group: 'org.primefaces', name: 'primefaces', version: '6.2'
+	compile group: 'org.glassfish', name: 'javax.faces', version: '2.2.16'
+	
+	//JSON
+	compile 'com.fasterxml.jackson.core:jackson-core:2.9.5'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+	
+	//Bootsfaces
+	compile 'net.bootsfaces:bootsfaces:1.2.0'
+	
+	//Maven
+}
+
